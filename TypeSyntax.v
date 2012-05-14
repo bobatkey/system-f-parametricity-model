@@ -4,26 +4,6 @@ Require Import Compare_dec.
 
 Set Implicit Arguments.
 
-(*
-(* This is here because the standard library declares plus_comm to be
-   opaque *)
-Lemma plus_0 : forall m, m = m + 0.
-induction m. reflexivity. change (S m + 0) with (S (m + 0)). rewrite <- IHm. reflexivity.
-Defined.
-
-Lemma plus_S : forall n m, S n + m = n + S m.
-intros. induction n.
- reflexivity.
- simpl. rewrite <- IHn. reflexivity.
-Defined.
-
-Lemma plus_comm_transparent : forall n m, n + m = m + n.
-induction n.
- intro m. apply plus_0.
- intros. rewrite <- plus_S. change (S n + m) with (S (n + m)). rewrite IHn. reflexivity.
-Defined.
-*)
-
 (******************************************************************************)
 
 Inductive variable : nat -> Set :=
