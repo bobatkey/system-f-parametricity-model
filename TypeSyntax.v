@@ -66,8 +66,8 @@ intros. dependent induction H0.
  apply subst_var with (d:=c + 1 + g). assumption. reflexivity. assumption.
  (* ty_arr *)
  apply ty_arr.
-  apply IHtype1. apply H. reflexivity.
-  apply IHtype2. apply H. reflexivity.
+  apply IHtype1. apply H.
+  apply IHtype2. apply H.
  (* ty_forall *)
  apply ty_forall.
  apply IHtype with (c0:=S c). apply shift1. apply H. reflexivity.

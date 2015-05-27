@@ -167,10 +167,8 @@ dependent induction ty.
  (* ty_arr *)
  change (shift g2 g1 (ty_arr ty1 ty2)) with (ty_arr (shift g2 g1 ty1) (shift g2 g1 ty2)).
  unfold ty_sem in *. unfold ty_rel in *. simpl in *.
- destruct (IHty1 g1 g2 ty1) as [ty_eq1 rel_eq1].
-  reflexivity. reflexivity. 
- destruct (IHty2 g1 g2 ty2) as [ty_eq2 rel_eq2].
-  reflexivity. reflexivity. 
+ destruct IHty1 as [ty_eq1 rel_eq1].
+ destruct IHty2 as [ty_eq2 rel_eq2].
  split.
   (* types *)
   intros. rewrite ty_eq1 with (e1:=e1) (e2:=e2) (A:=A). rewrite ty_eq2 with (e1:=e1) (e2:=e2) (A:=A). trivial.

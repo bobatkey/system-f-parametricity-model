@@ -251,8 +251,8 @@ intros g1 g2 ty1 ty2. revert ty1. dependent induction ty2.
  intros. 
  change (subst g2 g1 ty1 (ty_arr ty2_1 ty2_2)) with (ty_arr (subst g2 g1 ty1 ty2_1) (subst g2 g1 ty1 ty2_2)).
  unfold ty_rel in *. unfold ty_sem in *. simpl in *.
- destruct (IHty2_1 g1 g2 ty2_1) with (ty1:=ty1) as [ty_eq1 rel_eq1]. reflexivity. reflexivity.
- destruct (IHty2_2 g1 g2 ty2_2) with (ty1:=ty1) as [ty_eq2 rel_eq2]. reflexivity. reflexivity.
+ destruct IHty2_1 with (ty1:=ty1) as [ty_eq1 rel_eq1].
+ destruct IHty2_2 with (ty1:=ty1) as [ty_eq2 rel_eq2].
  clear IHty2_1 IHty2_2.
  split; intros.
   (* types *)
